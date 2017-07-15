@@ -34,7 +34,7 @@ class TweetListener(StreamListener):
         # variables to use
         self.profiles_text = ""
 
-        profile_file = "expanded_profile.txt"
+        profile_file = "expand.txt"
         self.set_profile_text(profile_file)
 
         self.pushed_tweets_count = {}
