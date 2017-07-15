@@ -12,15 +12,13 @@ def start_tweets_api():
     auth.set_access_token(access_token, access_token_secret)
 
     stream = Stream(auth, listener)
-    print
-    stream
+    print stream
     while True:
         try:
             stream.sample(languages=['en'])
 
         except Exception as ex:
-            print
-            str(ex)
+            print str(ex)
 
 
 if __name__ == "__main__":

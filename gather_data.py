@@ -9,7 +9,6 @@ import data_cleaning_filtering as dcf
 from utils import push_tweet
 import Ranking_Algo as ra
 
-
 class TweetListener(StreamListener):
     def __init__(self, api=None):
         super(TweetListener, self).__init__(api)
@@ -69,7 +68,7 @@ class TweetListener(StreamListener):
         if result['push_tweet']:
             if self.can_push(result['profile_id']):
                 pass
-                # push_tweet(*result)
+                #push_tweet(*result)
             else:
                 print("limit exceeded")
 

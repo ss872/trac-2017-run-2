@@ -5,27 +5,23 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from bs4 import BeautifulSoup
 
-tweet_demo = {'expanded_url': u'https://plato.stanford.edu/entries/reasons-agent/', 'user_followers': 1976,
-              'text': u'reason hershey for action agent neutral v agent relative philosophyjournals book review article entry feedly',
-              'retweeted': False, 'timestamp_ms': u'1499846738663', 'id': 885047485818974208, 'fav_count': 0}
-profile_path = "/home/shyamal/PycharmProjects/Trac 2017/expand.txt"
+profile_path = "/home/shyamal/PycharmProjects/trac-2017/expand.txt"
 
-profile_id_path = "/home/shyamal/PycharmProjects/Trac 2017/tid.txt"
+profile_id_path = "/home/shyamal/PycharmProjects/trac-2017/tid.txt"
 profile_ids = open(profile_id_path, 'r')
 l = []
 for line in profile_ids:
     id = line.strip().split()
     l += id
+print l
 
-threshold_path = "/home/shyamal/PycharmProjects/Trac 2017/Threshold.txt"
+threshold_path = "/home/shyamal/PycharmProjects/trac-2017/Threshold.txt"
 all_threshold = open(threshold_path, 'r')
 threshold = []
 for line in all_threshold:
     y = line.strip().split()
     threshold += y
-print
-threshold
-
+print threshold
 
 def Ranking_algo(tweet_demo):
     stop_words = set(stopwords.words('english'))
@@ -41,8 +37,7 @@ def Ranking_algo(tweet_demo):
         url_cont = word_tokenize(url_cont)
         url_cont = [w for w in url_cont if not w in stop_words]
         tot_data = no_repeat(text, url_cont)
-        print
-        url_cont
+        print url_cont
     profile_file = open(profile_path, "r")
     i = 1
     j = 0
@@ -64,12 +59,10 @@ def Ranking_algo(tweet_demo):
         file.close()
         i += 1
         j += 1
-        print
-        "total rank", rank
+        print "total rank", rank
         # print "Url rank", rank2
         # print rank + rank2
-        print
-        "======================"
+        print "======================"
         # print profile_file
 
 
@@ -81,8 +74,7 @@ def ranking(text, profile):
         for pword in profile_words:
             if tword == pword:
                 rank += 1
-                print
-                tword + pword
+                print tword + pword
                 # print rank
                 # print word
     return rank
@@ -114,7 +106,7 @@ def no_repeat(tweet, url):
 
 
 def file_writer(tweets, l):
-    path = "/home/shyamal/PycharmProjects/Trac 2017/code_files/" + str(l) + ".txt"
+    path = "/home/shyamal/PycharmProjects/trac-2017/code_files/" + str(l) + ".txt"
     z = open(path, 'a')
     z.write(str(l) + " ")
     z.write(str(tweets['id']) + " ")
@@ -124,7 +116,7 @@ def file_writer(tweets, l):
 
 
 def final_file_writer(tweets, l):
-    path = "/home/shyamal/PycharmProjects/Trac 2017/filtered_tweets/" + str(l) + ".txt"
+    path = "/home/shyamal/PycharmProjects/trac-2017/filtered_tweets/" + str(l) + ".txt"
     z = open(path, 'a')
     z.write(str(l) + " ")
     z.write(str(tweets['id']) + " ")
