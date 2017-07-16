@@ -9,6 +9,8 @@ import data_cleaning_filtering as dcf
 from utils import push_tweet
 import Ranking_Algo as ra
 
+CLIENT_ID = "Qp4E3exCySsm"
+
 class TweetListener(StreamListener):
     def __init__(self, api=None):
         super(TweetListener, self).__init__(api)
@@ -54,21 +56,32 @@ class TweetListener(StreamListener):
             return True
         if not clean_tweet:
             return True
-        ra.Ranking_algo(clean_tweet)
+        # ra.Ranking_algo(clean_tweet)
+        results = ra.Ranking_algo(clean_tweet)
+
         ########## Algo #########
         #	result = algoxyz(clean_tweet)
         # output of algoxyz should be like below
-        result = {
-            'push_tweet': True,
-            'tweet_id': 123456789,
-            'profile_id': "MB101",
-        }
+        # result = [{
+        #     'push_tweet': True,
+        #     'tweet_id': 123456789,
+        #     'profile_id': "MB101",
+        #     'tweet_score': 5,
+        #     'text': "this is tweet text",
+        # },
+        # {
+        #     'push_tweet': True,
+        #     'tweet_id': 123456789,
+        #     'profile_id': "MB101",
+        # }
+        # ]
         ######### End Algo ##########
 
-        if result['push_tweet']:
+        print results
+
+        for result in results:
             if self.can_push(result['profile_id']):
-                pass
-                #push_tweet(*result)
+                push_tweet(result["profile_id"], result["tweet_id"], CLIENT_ID, result["tweet_score"], result["text"])
             else:
                 print("limit exceeded")
 

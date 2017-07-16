@@ -13,7 +13,7 @@ l = []
 for line in profile_ids:
     id = line.strip().split()
     l += id
-print l
+# print l
 
 threshold_path = "/home/shyamal/PycharmProjects/trac-2017/Threshold.txt"
 all_threshold = open(threshold_path, 'r')
@@ -21,9 +21,12 @@ threshold = []
 for line in all_threshold:
     y = line.strip().split()
     threshold += y
-print threshold
+
+
+# print threshold
 
 def Ranking_algo(tweet_demo):
+    result = []
     stop_words = set(stopwords.words('english'))
     text = tweet_demo['text']
     text = text.split()
@@ -51,7 +54,16 @@ def Ranking_algo(tweet_demo):
         temp['rank'] = rank
         flag = threshold_check(temp, threshold[j])
         if flag:
-            final_file_writer(temp, l[j])
+            result_profile = {}
+            result_profile['push_tweet'] = True
+            result_profile['tweet_id'] = temp['id']
+            result_profile['profile_id'] = l[j]
+            result_profile['tweet_score'] = temp['rank']
+            result_profile['text'] = temp['text']
+
+            # final_file_writer(temp, l[j])
+            result.append(result_profile)
+
         file_writer(temp, l[j])
         file = open(file_name, "a")
         file.write("\n")
@@ -59,12 +71,12 @@ def Ranking_algo(tweet_demo):
         file.close()
         i += 1
         j += 1
-        print "total rank", rank
+        # print "total rank", rank
         # print "Url rank", rank2
         # print rank + rank2
-        print "======================"
+        # print "======================"
         # print profile_file
-
+    return result
 
 def ranking(text, profile):
     rank = 0
@@ -116,6 +128,7 @@ def file_writer(tweets, l):
 
 
 def final_file_writer(tweets, l):
+    #print "i was here"
     path = "/home/shyamal/PycharmProjects/trac-2017/filtered_tweets/" + str(l) + ".txt"
     z = open(path, 'a')
     z.write(str(l) + " ")
@@ -127,7 +140,7 @@ def final_file_writer(tweets, l):
 
 def threshold_check(temp, threshold):
     rank = temp['rank']
-    if rank >= threshold:
+    if rank >= int(threshold):
         return True
     else:
         return False
