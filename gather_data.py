@@ -52,10 +52,10 @@ class TweetListener(StreamListener):
         clean_tweet = dcf.filter_tweet(data)
         # print clean_tweet
 
-        if clean_tweet and not self.text_in_profile(clean_tweet['text']):
-            return True
-        if not clean_tweet:
-            return True
+        # if clean_tweet and not self.text_in_profile(clean_tweet['text']):
+        #     return True
+        # if not clean_tweet:
+        #     return True
         # ra.Ranking_algo(clean_tweet)
         results = ra.Ranking_algo(clean_tweet)
 
