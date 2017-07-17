@@ -33,11 +33,11 @@ def Ranking_algo(tweet_demo):
     url = tweet_demo['expanded_url']
     if url == "NULL":
         tot_data = no_repeat(text, [])
-    elif:
-        for urls in abandon_url:
-            if url == urls:
-                print "URL IS ABANDONED"
-                tot_data = no_repeat(text, [])
+    # elif:
+    #     for urls in abandon_url:
+    #         if url == urls:
+    #             print "URL IS ABANDONED"
+    #             tot_data = no_repeat(text, [])
     else:
         url_cont = Url_Crawler(url)
         url_cont = dc.clean_tweet_data(url_cont)
