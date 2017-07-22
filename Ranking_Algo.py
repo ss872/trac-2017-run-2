@@ -5,9 +5,9 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from bs4 import BeautifulSoup
 
-profile_path = "/home/shyamal/PycharmProjects/offline_trac_run-2/expand.txt"
+profile_path = "/home/sandip/PycharmProjects/trac-2017-run-2/expand.txt"
 
-profile_id_path = "/home/shyamal/PycharmProjects/offline_trac_run-2/tid.txt"
+profile_id_path = "/home/sandip/PycharmProjects/trac-2017-run-2/tid.txt"
 profile_ids = open(profile_id_path, 'r')
 l = []
 for line in profile_ids:
@@ -15,7 +15,7 @@ for line in profile_ids:
     l += id
 # print l
 
-threshold_path = "/home/shyamal/PycharmProjects/offline_trac_run-2/Threshold.txt"
+threshold_path = "/home/sandip/PycharmProjects/trac-2017-run-2/Threshold.txt"
 all_threshold = open(threshold_path, 'r')
 threshold = []
 for line in all_threshold:
@@ -30,26 +30,28 @@ def Ranking_algo(tweet_demo):
     stop_words = set(stopwords.words('english'))
     text = tweet_demo['text']
     text = text.split()
+    text = no_repeat(text)
     url = tweet_demo['expanded_url']
     if url == "NULL":
-        tot_data = no_repeat(text, [])
+        url_cont = ""
     else:
         url_cont = Url_Crawler(url)
         url_cont = dc.clean_tweet_data(url_cont)
         url_cont = dc.do_lemmatize(url_cont)
         url_cont = word_tokenize(url_cont)
         url_cont = [w for w in url_cont if not w in stop_words]
-        tot_data = no_repeat(text, url_cont)
-        print url_cont
+        url_cont = no_repeat(url_cont)
+        #print url_cont
     profile_file = open(profile_path, "r")
     i = 1
     j = 0
     for line in profile_file:
         line = dc.clean_tweet_data(line)
         line = dc.do_lemmatize(line)
-        #file_name = "/home/shyamal/PycharmProjects/Profile_Rank/" + str(i) + "_Profile_Rank.txt"
-        rank = ranking(tot_data, line)
-        # rank2 = ranking(url_cont, line)
+        #file_name = "/home/sandip/PycharmProjects/Profile_Rank/" + str(i) + "_Profile_Rank.txt"
+        rank1 = ranking(text, line)
+        rank2 = ranking(url_cont, line)
+        rank = rank1 + rank2
         temp = tweet_demo
         temp['rank'] = rank
         flag = threshold_check(temp, threshold[j])
@@ -92,6 +94,7 @@ def ranking(text, profile):
 
 
 def Url_Crawler(url):
+    abc = ""
     source_code = requests.get(url)
     plain_source = source_code.text
     soup = BeautifulSoup(plain_source, "html.parser")
@@ -109,15 +112,14 @@ def Url_Crawler(url):
     return abc
 
 
-def no_repeat(tweet, url):
-    tot_data = tweet + url
-    dict_data = set(tot_data)
+def no_repeat(tweet):
+    dict_data = set(tweet)
     list_data = list(dict_data)
     return list_data
 
 
 def file_writer(tweets, l):
-    path = "/home/shyamal/PycharmProjects/offline_trac_run-2/code_files/" + str(l) + ".txt"
+    path = "/home/sandip/PycharmProjects/trac-2017-run-2/code_files/" + str(l) + ".txt"
     z = open(path, 'a')
     z.write(str(l) + " ")
     z.write(str(tweets['id']) + " ")
@@ -128,7 +130,7 @@ def file_writer(tweets, l):
 
 def final_file_writer(tweets, l):
     #print "i was here"
-    path = "/home/shyamal/PycharmProjects/offline_trac_run-2/filtered_tweets/" + str(l) + ".txt"
+    path = "/home/sandip/PycharmProjects/trac-2017-run-2/filtered_tweets/" + str(l) + ".txt"
     z = open(path, 'a')
     z.write(str(l) + " ")
     z.write(str(tweets['id']) + " ")
