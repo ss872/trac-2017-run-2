@@ -5,9 +5,9 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from bs4 import BeautifulSoup
 
-profile_path = "/home/shyamal/PycharmProjects/trac-2017/expand.txt"
+profile_path = "/home/shyamal/PycharmProjects/offline_trac_run-2/expand.txt"
 
-profile_id_path = "/home/shyamal/PycharmProjects/trac-2017/tid.txt"
+profile_id_path = "/home/shyamal/PycharmProjects/offline_trac_run-2/tid.txt"
 profile_ids = open(profile_id_path, 'r')
 l = []
 for line in profile_ids:
@@ -15,14 +15,14 @@ for line in profile_ids:
     l += id
 # print l
 
-threshold_path = "/home/shyamal/PycharmProjects/trac-2017/Threshold.txt"
+threshold_path = "/home/shyamal/PycharmProjects/offline_trac_run-2/Threshold.txt"
 all_threshold = open(threshold_path, 'r')
 threshold = []
 for line in all_threshold:
     y = line.strip().split()
     threshold += y
 
-abandon_url=["https://www.google.co.in","https://www.facebook.com/","https://www.youtube.com/"]
+
 # print threshold
 
 def Ranking_algo(tweet_demo):
@@ -33,11 +33,6 @@ def Ranking_algo(tweet_demo):
     url = tweet_demo['expanded_url']
     if url == "NULL":
         tot_data = no_repeat(text, [])
-    # elif:
-    #     for urls in abandon_url:
-    #         if url == urls:
-    #             print "URL IS ABANDONED"
-    #             tot_data = no_repeat(text, [])
     else:
         url_cont = Url_Crawler(url)
         url_cont = dc.clean_tweet_data(url_cont)
@@ -52,7 +47,7 @@ def Ranking_algo(tweet_demo):
     for line in profile_file:
         line = dc.clean_tweet_data(line)
         line = dc.do_lemmatize(line)
-        file_name = "/home/shyamal/PycharmProjects/Profile_Rank/" + str(i) + "_Profile_Rank.txt"
+        #file_name = "/home/shyamal/PycharmProjects/Profile_Rank/" + str(i) + "_Profile_Rank.txt"
         rank = ranking(tot_data, line)
         # rank2 = ranking(url_cont, line)
         temp = tweet_demo
@@ -65,15 +60,14 @@ def Ranking_algo(tweet_demo):
             result_profile['profile_id'] = l[j]
             result_profile['tweet_score'] = temp['rank']
             result_profile['text'] = temp['text']
-
-            # final_file_writer(temp, l[j])
+            final_file_writer(temp, l[j])
             result.append(result_profile)
 
         file_writer(temp, l[j])
-        file = open(file_name, "a")
-        file.write("\n")
-        file.write(json.dumps(temp))
-        file.close()
+        # file = open(file_name, "a")
+        # file.write("\n")
+        # file.write(json.dumps(temp))
+        # file.close()
         i += 1
         j += 1
         # print "total rank", rank
@@ -123,7 +117,7 @@ def no_repeat(tweet, url):
 
 
 def file_writer(tweets, l):
-    path = "/home/shyamal/PycharmProjects/trac-2017/code_files/" + str(l) + ".txt"
+    path = "/home/shyamal/PycharmProjects/offline_trac_run-2/code_files/" + str(l) + ".txt"
     z = open(path, 'a')
     z.write(str(l) + " ")
     z.write(str(tweets['id']) + " ")
@@ -134,7 +128,7 @@ def file_writer(tweets, l):
 
 def final_file_writer(tweets, l):
     #print "i was here"
-    path = "/home/shyamal/PycharmProjects/trac-2017/filtered_tweets/" + str(l) + ".txt"
+    path = "/home/shyamal/PycharmProjects/offline_trac_run-2/filtered_tweets/" + str(l) + ".txt"
     z = open(path, 'a')
     z.write(str(l) + " ")
     z.write(str(tweets['id']) + " ")
