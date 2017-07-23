@@ -7,6 +7,10 @@ from bs4 import BeautifulSoup
 
 profile_path = "expand.txt"
 bhav_path = 'expand_bhavya.txt'
+bhav_file = open(bhav_path, 'r')
+bhav_profiles = []
+for line in bhav_file:
+    bhav_profiles += line.strip()
 
 profile_id_path = "tid.txt"
 profile_ids = open(profile_id_path, 'r')
@@ -51,7 +55,9 @@ def Ranking_algo(tweet_demo):
         line = dc.do_lemmatize(line)
         #file_name = "/home/sandip/PycharmProjects/Profile_Rank/" + str(i) + "_Profile_Rank.txt"
         rank1 = ranking(text, line)
+        rank1 += ranking(text,bhav_profiles[j])
         rank2 = ranking(url_cont, line)
+        rank2 += ranking(url_cont, bhav_profiles[j])
         rank = rank1 + rank2
         temp = tweet_demo
         temp['rank'] = rank
