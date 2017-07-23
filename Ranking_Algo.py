@@ -5,9 +5,10 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from bs4 import BeautifulSoup
 
-profile_path = "/home/sandip/PycharmProjects/trac-2017-run-2/expand.txt"
+profile_path = "expand.txt"
+bhav_path = 'expand_bhavya.txt'
 
-profile_id_path = "/home/sandip/PycharmProjects/trac-2017-run-2/tid.txt"
+profile_id_path = "tid.txt"
 profile_ids = open(profile_id_path, 'r')
 l = []
 for line in profile_ids:
@@ -15,7 +16,7 @@ for line in profile_ids:
     l += id
 # print l
 
-threshold_path = "/home/sandip/PycharmProjects/trac-2017-run-2/Threshold.txt"
+threshold_path = "Threshold.txt"
 all_threshold = open(threshold_path, 'r')
 threshold = []
 for line in all_threshold:
@@ -119,7 +120,7 @@ def no_repeat(tweet):
 
 
 def file_writer(tweets, l):
-    path = "/home/sandip/PycharmProjects/trac-2017-run-2/code_files/" + str(l) + ".txt"
+    path = "code_files/" + str(l) + ".txt"
     z = open(path, 'a')
     z.write(str(l) + " ")
     z.write(str(tweets['id']) + " ")
@@ -130,7 +131,7 @@ def file_writer(tweets, l):
 
 def final_file_writer(tweets, l):
     #print "i was here"
-    path = "/home/sandip/PycharmProjects/trac-2017-run-2/filtered_tweets/" + str(l) + ".txt"
+    path = "filtered_tweets/" + str(l) + ".txt"
     z = open(path, 'a')
     z.write(str(l) + " ")
     z.write(str(tweets['id']) + " ")
