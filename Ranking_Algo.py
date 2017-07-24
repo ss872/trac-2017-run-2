@@ -53,7 +53,7 @@ def Ranking_algo(tweet_demo):
         url_cont = no_repeat(url_cont)
         #print url_cont
     profile_file = open(profile_path, "r")
-    i = 1
+    #i = 1
     j = 0
     for line in profile_file:
         line = dc.clean_tweet_data(line)
@@ -80,14 +80,13 @@ def Ranking_algo(tweet_demo):
             result_profile['text'] = temp['text']
             result.append(result_profile)
             # final_file_writer(temp, l[j])
-
+        j += 1
         # file_writer(temp, l[j])
         # file = open(file_name, "a")
         # file.write("\n")
         # file.write(json.dumps(temp))
         # file.close()
-        i += 1
-        j += 1
+        #i += 1
         # print "total rank", rank
         # print "Url rank", rank2
         # print rank + rank2
