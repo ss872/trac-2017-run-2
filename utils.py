@@ -18,15 +18,18 @@ class PushProfiles(Model):
 
 def push_tweet(profile_id, tweet_id, client_id, tweet_score, tweet_text):
     jac=0.0
+    tweet_count = 0
     past_tweets = PushProfiles.select().where(PushProfiles.profile == profile_id)
     for each_tweet in past_tweets:
+        tweet_count += 1
         j=get_jaccard(tweet_text,each_tweet.text)
         print j
         if j>jac:
             jac=j
         else:
             pass
-    if jac < 0.4:
+    print "t count is ", tweet_count
+    if jac < 0.4 and tweet_count <= 10:
 
         url = 'http://scspc654.cs.uwaterloo.ca/tweet/{0}/{1}/{2}'.format(profile_id, tweet_id, client_id)
         print "url is ", url
@@ -34,7 +37,7 @@ def push_tweet(profile_id, tweet_id, client_id, tweet_score, tweet_text):
         # response = requests.post(url, headers=headers)
         #
         # if response.status_code == 204:
-        #     PushProfiles.create(profile=profile_id, tweet=tweet_id, score=tweet_score, text=tweet_text)
+        PushProfiles.create(profile=profile_id, tweet=tweet_id, score=tweet_score, text=tweet_text)
         #     print profile_id + " posted"
         # else:
         #     print "Tweet was unable to push as we get response code :", response.status_code

@@ -52,8 +52,8 @@ class TweetListener(StreamListener):
         clean_tweet = dcf.filter_tweet(data)
         # print clean_tweet
 
-        if clean_tweet and not self.text_in_profile(clean_tweet['text']):
-            return True
+        # if clean_tweet and not self.text_in_profile(clean_tweet['text']):
+        #     return True
         if not clean_tweet:
             return True
         # ra.Ranking_algo(clean_tweet)
@@ -77,26 +77,24 @@ class TweetListener(StreamListener):
         # ]
         ######### End Algo ##########
 
-        print results
+        #print results
 
         for result in results:
-            if self.can_push(result['profile_id']):
                 push_tweet(result["profile_id"], result["tweet_id"], CLIENT_ID, result["tweet_score"], result["text"])
-            else:
-                print("limit exceeded")
 
         return True
 
-    def can_push(self, profile_id):
-        push_count = self.pushed_tweets_count.get(profile_id)
-        if push_count:
-            if push_count <= 10:
-                return True
-            else:
-                return False
-        else:
-            self.pushed_tweets_count[profile_id] = 1
-            return True
+    # def can_push(self, profile_id):
+    #     push_count = self.pushed_tweets_count.get(profile_id)
+    #     if push_count:
+    #         print 'push count is ', push_count, "profile id is", profile_id
+    #         if push_count <= 10:
+    #             return True
+    #         else:
+    #             return False
+    #     else:
+    #         self.pushed_tweets_count[profile_id] = 1
+    #         return True
 
     def text_in_profile(self, text):
         for word in text.split():

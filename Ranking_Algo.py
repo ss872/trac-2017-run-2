@@ -58,13 +58,13 @@ def Ranking_algo(tweet_demo):
         line = dc.do_lemmatize(line)
         #file_name = "/home/sandip/PycharmProjects/Profile_Rank/" + str(i) + "_Profile_Rank.txt"
         rank1 = 3*(ranking(text, line))
-        print "expand txt      :"+ str(rank1)
+        #print "expand txt      :"+ str(rank1)
         rank1 += ranking(text,bhav_profiles[j])
-        print "bhav_profile txt:"+ str(rank1)
+        #print "bhav_profile txt:"+ str(rank1)
         rank2 = 3*(ranking(url_cont, line))
-        print "expand url      :" + str(rank2)
+        #print "expand url      :" + str(rank2)
         rank2 += ranking(url_cont, bhav_profiles[j])
-        print "bhav_profile url:" + str(rank2)
+        #print "bhav_profile url:" + str(rank2)
         rank = rank1 + rank2
         temp = tweet_demo
         temp['rank'] = rank
