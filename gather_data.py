@@ -24,7 +24,7 @@ class TweetListener(StreamListener):
         warningHandler = logging.handlers.TimedRotatingFileHandler('warning.log', when='H', encoding='bz2', utc=True)
         warningHandler.setLevel(logging.WARN)
         self.logger.addHandler(warningHandler)
-        logging.captureWarnings(True);
+        logging.captureWarnings(True)
 
         consoleHandler = logging.StreamHandler()
         consoleHandler.setLevel(logging.WARN)
