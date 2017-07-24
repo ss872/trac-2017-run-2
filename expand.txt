@@ -157,12 +157,12 @@ tabletop RPGs game Apocalypse World brand Powered Apocalypse PbtA
 philosophy language articles musings quotes
 TV show Impractical Jokers episodes cast members
 Google Pixel XL news features
-Doctor Who Jodie Whittaker gender gender inequality consequences
+Doctor Who Jodie Whittaker gender inequality consequences
 twitter community political economic personal social rights women feminism equality
 blockchain technology invest power cryptocurrency
 Electric cars current issues reliable battery Tesla
 ACL2017 annual meeting best papers presented Vancouver Canada
-artists ACL music festival Ticket price XX Chance Rapper Killers Zilker Park Austin Texas
+artists ACL music festival Ticket price Chance Rapper Killers Zilker Park Austin Texas
 knees ACL injury prevention Anterior cruciate ligament
 17th FINA World Championships Budapest Cameron McEvoy Katinka Hosszu Katie Ledecky Ruta  Meilutyte
 problems air traveling airplane delays flight meals checking baggage personal photos
@@ -171,9 +171,9 @@ development local parks recreational facilities general public administrative pe
 scientific computing tools tensorflow corenlp ipython numpy
 cyclist friendly cities safe cycling practice
 news popular science Nautilus magazine NautilusMag discussion advances
-SwiftOnSecurity twitter Information technology security news
+Swift twitter Information technology security news
 Swimming meets experience photos results
-Computational Linguistics NLP natural language processing research
+Compustational Linguistics NLP natural language processing research
 Running events united states photos results
 Human rights Europe violation advances
 Brexit Scotland influence consequences
