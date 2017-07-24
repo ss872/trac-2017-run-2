@@ -29,7 +29,7 @@ def push_tweet(profile_id, tweet_id, client_id, tweet_score, tweet_text):
         else:
             pass
     print "t count is ", tweet_count
-    if jac < 0.4 and tweet_count <= 10:
+    if jac < 0.4 and tweet_count < 10:
 
         url = 'http://scspc654.cs.uwaterloo.ca/tweet/{0}/{1}/{2}'.format(profile_id, tweet_id, client_id)
         print "url is ", url
