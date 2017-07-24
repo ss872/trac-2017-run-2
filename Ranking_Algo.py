@@ -12,6 +12,8 @@ bhav_file = open(bhav_path, 'r')
 bhav_profiles = []
 for line in bhav_file:
     line=line.strip()
+    line = dc.clean_tweet_data(line)
+    line = dc.do_lemmatize(line)
     bhav_profiles.append(line)
 print bhav_profiles
 
