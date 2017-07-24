@@ -7,10 +7,13 @@ from bs4 import BeautifulSoup
 
 profile_path = "expand.txt"
 bhav_path = 'expand_bhavya.txt'
+
 bhav_file = open(bhav_path, 'r')
 bhav_profiles = []
 for line in bhav_file:
-    bhav_profiles += line.strip()
+    line=line.strip()
+    bhav_profiles.append(line)
+print bhav_profiles
 
 profile_id_path = "tid.txt"
 profile_ids = open(profile_id_path, 'r')
@@ -54,10 +57,14 @@ def Ranking_algo(tweet_demo):
         line = dc.clean_tweet_data(line)
         line = dc.do_lemmatize(line)
         #file_name = "/home/sandip/PycharmProjects/Profile_Rank/" + str(i) + "_Profile_Rank.txt"
-        rank1 = ranking(text, line)
+        rank1 = 3*(ranking(text, line))
+        print "expand txt      :"+ str(rank1)
         rank1 += ranking(text,bhav_profiles[j])
-        rank2 = ranking(url_cont, line)
+        print "bhav_profile txt:"+ str(rank1)
+        rank2 = 3*(ranking(url_cont, line))
+        print "expand url      :" + str(rank2)
         rank2 += ranking(url_cont, bhav_profiles[j])
+        print "bhav_profile url:" + str(rank2)
         rank = rank1 + rank2
         temp = tweet_demo
         temp['rank'] = rank
@@ -69,8 +76,8 @@ def Ranking_algo(tweet_demo):
             result_profile['profile_id'] = l[j]
             result_profile['tweet_score'] = temp['rank']
             result_profile['text'] = temp['text']
-            final_file_writer(temp, l[j])
             result.append(result_profile)
+            final_file_writer(temp, l[j])
 
         file_writer(temp, l[j])
         # file = open(file_name, "a")
