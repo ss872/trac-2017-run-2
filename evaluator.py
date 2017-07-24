@@ -1,14 +1,14 @@
 from gather_data import *
 
-access_token = "1456511107-LSRlg2Cemxq5pxtip1ZqXEjGVztC7qbGtbLgXe9"
+'''access_token = "1456511107-LSRlg2Cemxq5pxtip1ZqXEjGVztC7qbGtbLgXe9"
 access_token_secret = "sstwXdOd3ErHyQPsIvd1Ek0JsLvPOtCZOLQXSWP8FLNBv"
 consumer_key = "cSX57JqiOvEh6m8RpaeI4fpbW"
-consumer_secret = "zutTaUvx4KbLESEInyNX8vC6tydPV58joq1WIGGgWxYzHHChgw"
+consumer_secret = "zutTaUvx4KbLESEInyNX8vC6tydPV58joq1WIGGgWxYzHHChgw"'''
 
-'''consumer_key = "ZN3oupo3WzZmIcvNSGXdK4yea"
+consumer_key = "ZN3oupo3WzZmIcvNSGXdK4yea"
 consumer_secret = "wZwscKyJc60xizrSSWNKRhRrllRLYyv7RpKWKVsCiPHfuGghAp"
 access_token = "873881805119672322-MyeCpCteUIUzjKmHGBB5ZPcbp8mMVqZ"
-access_token_secret = "PatrEqAWDPDe53PnLJEuvMsqQ7fycI76SppkKnJQcuajM" '''
+access_token_secret = "PatrEqAWDPDe53PnLJEuvMsqQ7fycI76SppkKnJQcuajM"
 
 
 '''access_token = "873881805119672322-kwWJeoffxEAiWNbwMnqOpP9uODLCr6T"
