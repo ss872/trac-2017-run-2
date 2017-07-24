@@ -15,7 +15,7 @@ for line in bhav_file:
     line = dc.clean_tweet_data(line)
     line = dc.do_lemmatize(line)
     bhav_profiles.append(line)
-print bhav_profiles
+#print bhav_profiles
 
 profile_id_path = "tid.txt"
 profile_ids = open(profile_id_path, 'r')
@@ -103,7 +103,7 @@ def ranking(text, profile):
         for pword in profile_words:
             if tword == pword:
                 rank += 1
-                print tword + pword
+                # print tword + pword
                 # print rank
                 # print word
     return rank

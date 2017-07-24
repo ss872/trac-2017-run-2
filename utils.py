@@ -23,26 +23,26 @@ def push_tweet(profile_id, tweet_id, client_id, tweet_score, tweet_text):
     for each_tweet in past_tweets:
         tweet_count += 1
         j=get_jaccard(tweet_text,each_tweet.text)
-        print j
+        #print j
         if j>jac:
             jac=j
         else:
             pass
-    print "t count is ", tweet_count
+    #print "t count is ", tweet_count
     if jac < 0.4 and tweet_count < 10:
 
         url = 'http://scspc654.cs.uwaterloo.ca/tweet/{0}/{1}/{2}'.format(profile_id, tweet_id, client_id)
         print "url is ", url
-        # headers = {'Content-type': 'application/json'}
-        # response = requests.post(url, headers=headers)
-        #
-        # if response.status_code == 204:
-        PushProfiles.create(profile=profile_id, tweet=tweet_id, score=tweet_score, text=tweet_text)
-        #     print profile_id + " posted"
-        # else:
-        #     print "Tweet was unable to push as we get response code :", response.status_code
+        headers = {'Content-type': 'application/json'}
+        response = requests.post(url, headers=headers)
+
+        if response.status_code == 204:
+            PushProfiles.create(profile=profile_id, tweet=tweet_id, score=tweet_score, text=tweet_text)
+            print profile_id + " posted"
+        else:
+            print "Tweet was unable to push as we get response code :", response.status_code
     else:
-        print "Tweet was unable to push because of High jaccard"
+        print "Tweet was unable to push"
 
 def get_jaccard(a,b):
     a=a.split()
