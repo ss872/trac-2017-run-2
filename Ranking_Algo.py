@@ -79,9 +79,9 @@ def Ranking_algo(tweet_demo):
             result_profile['tweet_score'] = temp['rank']
             result_profile['text'] = temp['text']
             result.append(result_profile)
-            final_file_writer(temp, l[j])
+            # final_file_writer(temp, l[j])
 
-        file_writer(temp, l[j])
+        # file_writer(temp, l[j])
         # file = open(file_name, "a")
         # file.write("\n")
         # file.write(json.dumps(temp))
