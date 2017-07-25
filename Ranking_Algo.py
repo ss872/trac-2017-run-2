@@ -61,13 +61,14 @@ def Ranking_algo(tweet_demo):
         #file_name = "/home/sandip/PycharmProjects/Profile_Rank/" + str(i) + "_Profile_Rank.txt"
         rank1 = 3*(ranking(text, line))
         #print "expand txt      :"+ str(rank1)
-        rank1 += ranking(text,bhav_profiles[j])
-        print "bhav_profile txt:"+ str(rank1)
-        rank2 = ranking(url_cont, line)
+        #rank1 += ranking(text,bhav_profiles[j])
+        #print "bhav_profile txt:"+ str(rank1)
+        rank2 = 2*(ranking(url_cont, line))
         #print "expand url      :" + str(rank2)
-        rank2 += ranking(url_cont, bhav_profiles[j])
-        print "bhav_profile url:" + str(rank2)
+        #rank2 += ranking(url_cont, bhav_profiles[j])
+        #print "bhav_profile url:" + str(rank2)
         rank = rank1 + rank2
+        print "rank"+str(rank)
         temp = tweet_demo
         temp['rank'] = rank
         flag = threshold_check(temp, threshold[j])
