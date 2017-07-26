@@ -65,7 +65,7 @@ def Ranking_algo(tweet_demo):
         #print "expand txt      :"+ str(rank1)
         #rank1 += ranking(text,bhav_profiles[j])
         #print "bhav_profile txt:"+ str(rank1)
-        rank2 = 2*(ranking(url_cont, line))
+        rank2 = 3*(ranking(url_cont, line))
         #print "expand url      :" + str(rank2)
         #rank2 += ranking(url_cont, bhav_profiles[j])
         #print "bhav_profile url:" + str(rank2)
