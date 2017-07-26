@@ -46,14 +46,13 @@ def Ranking_algo(tweet_demo):
         url_cont = ""
     else:
         print "point A"
-        print url
         url_cont = Url_Crawler(url)
+        print "point B"
         url_cont = dc.clean_tweet_data(url_cont)
         url_cont = dc.do_lemmatize(url_cont)
         url_cont = word_tokenize(url_cont)
         url_cont = [w for w in url_cont if not w in stop_words]
         url_cont = no_repeat(url_cont)
-        print "point B"
         #print url_cont
     profile_file = open(profile_path, "r")
     #i = 1

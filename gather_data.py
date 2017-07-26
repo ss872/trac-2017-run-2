@@ -77,7 +77,7 @@ class TweetListener(StreamListener):
         # ]
         ######### End Algo ##########
 
-        #print results
+        print "results is ", results
 
         for result in results:
                 push_tweet(result["profile_id"], result["tweet_id"], CLIENT_ID, result["tweet_score"], result["text"])
