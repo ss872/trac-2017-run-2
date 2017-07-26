@@ -110,7 +110,7 @@ def ranking(text, profile):
 
 
 def Url_Crawler(url):
-    abc = ""
+    abc = " "
     source_code = requests.get(url)
     plain_source = source_code.text
     soup = BeautifulSoup(plain_source, "html.parser")
