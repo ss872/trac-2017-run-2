@@ -68,7 +68,7 @@ def Ranking_algo(tweet_demo):
         #rank2 += ranking(url_cont, bhav_profiles[j])
         #print "bhav_profile url:" + str(rank2)
         rank = rank1 + rank2
-        print "rank"+str(rank)
+        # print "rank :"+str(rank)
         temp = tweet_demo
         temp['rank'] = rank
         flag = threshold_check(temp, threshold[j])
@@ -103,8 +103,8 @@ def ranking(text, profile):
         for pword in profile_words:
             if tword == pword:
                 rank += 1
-                # print tword + pword
-                # print rank
+                print tword, ' ', pword
+                print rank
                 # print word
     return rank
 
