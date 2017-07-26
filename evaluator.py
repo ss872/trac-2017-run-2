@@ -29,7 +29,7 @@ def start_tweets_api():
         try:
             p = multiprocessing.Process(target=multi,name="multi")
             p.start()
-            p.join(900)
+            p.join(300)
             if p.is_alive():
                 print "lets terminate"
                 p.terminate()
