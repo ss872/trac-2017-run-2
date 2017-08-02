@@ -56,7 +56,7 @@ def Ranking_algo(tweet_demo):
         line = dc.do_lemmatize(line)
         rank1 = 3*(ranking(text, line))
         rank2 = 2*(ranking(url_cont, line))
-        rank = rank1 + rank2 + 1
+        rank = rank1 + rank2
         temp = tweet_demo
         temp['rank'] = rank
         flag = threshold_check(temp, threshold[j])
